@@ -1,0 +1,25 @@
+package com.jdo.in;
+import java.util.Set;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+import com.google.appengine.api.datastore.Key;
+
+
+@PersistenceCapable
+public class Table1 {
+	
+
+	  @Persistent
+	    private Set<Key> imports;
+
+	public Object getKey() {
+		
+		return imports;
+	}
+
+}
+
+
+  

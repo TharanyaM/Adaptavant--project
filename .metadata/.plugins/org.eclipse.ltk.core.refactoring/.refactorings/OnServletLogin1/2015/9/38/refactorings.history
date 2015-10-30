@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;OnServletLogin1/well.css&apos; to &apos;Stylesheet.css&apos;" description="Rename resource &apos;well.css&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="well.css" name="Stylesheet.css" stamp="1442222588301" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;OnServletLogin1/Stylesheet.css&apos; to &apos;stylesheet.css&apos;" description="Rename resource &apos;Stylesheet.css&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Stylesheet.css" name="stylesheet.css" stamp="1442222728725" updateReferences="true"/>
+</session>

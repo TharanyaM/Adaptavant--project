@@ -1,0 +1,28 @@
+package string;
+
+public class Performance {
+	public static void main(String args[])
+	{
+		long startTime=System.currentTimeMillis();
+		for(int i=0;i<50000;i++)
+		{
+			String a="hello";
+			String b="hello";
+		}
+			long endTime=System.currentTimeMillis();
+			System.out.println("time take to create literal:"+(endTime-startTime)+" "+"millis");
+		
+		long startTime1=System.currentTimeMillis();
+		for(int i=0;i<50000;i++)
+		{
+			String c=new String("hello");
+			String d=new String("hai");
+		}
+			long endTime1=System.currentTimeMillis();
+			System.out.println("time taken to create object:"+(endTime1-startTime1)+" "+"millis");
+			
+		
+		
+	}
+
+}

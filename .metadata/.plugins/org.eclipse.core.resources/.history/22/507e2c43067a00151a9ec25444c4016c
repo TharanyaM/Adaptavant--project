@@ -1,0 +1,79 @@
+package com.project.in;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
+
+@PersistenceCapable
+public class Client {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+
+	@Persistent
+	private Long id;
+
+	@Persistent
+	private String email;
+
+	@Persistent
+	private String pic;
+
+	@Persistent
+	private Date date;
+
+	@Persistent
+	public ArrayList<ListDetail> listdetail = new ArrayList<ListDetail>();
+
+	// getter and setter methods
+
+	public void setListDetail(ArrayList<ListDetail> list) {
+		System.out.println("got in");
+		this.listdetail = list;
+	}
+
+	List<ListDetail> getListDetail() {
+		return listdetail;
+	}
+
+	public void setId(long key2) {
+		this.id = key2;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String userEmail) {
+		this.email = userEmail;
+	}
+
+	public String getPicture() {
+		return pic;
+	}
+
+	public void setPicture(String pic) {
+		this.pic = pic;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date hireDate) {
+		this.date = hireDate;
+	}
+
+}

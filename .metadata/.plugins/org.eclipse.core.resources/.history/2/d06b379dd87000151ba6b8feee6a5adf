@@ -1,0 +1,20 @@
+package com.datastore.in;
+
+import java.io.IOException;
+
+import javax.servlet.http.*;
+
+import com.google.appengine.api.datastore.Entity;
+
+@SuppressWarnings("serial")
+public class DatastoreServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		Entity e=new Entity("person");
+		e.setProperty("first name","tharan");
+		e.setProperty("lastnmae","M");
+		e.setProperty("email","tharanya212@gmail.com");
+		resp.setContentType("text/plain");
+		resp.getWriter().println("Hello, well to all datastore");
+	}
+}

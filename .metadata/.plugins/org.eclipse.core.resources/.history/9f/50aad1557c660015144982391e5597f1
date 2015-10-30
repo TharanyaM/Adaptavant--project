@@ -1,0 +1,18 @@
+package string;
+
+public class Search {
+	public static void main(String args[])
+	{
+		String str="well come to all";
+		int index=str.indexOf("well");
+		if(index==-1)
+		{
+			System.out.println("value not found:"+index);
+		}
+		else
+		{
+			System.out.println("value is:"+index);
+		}
+	}
+
+}

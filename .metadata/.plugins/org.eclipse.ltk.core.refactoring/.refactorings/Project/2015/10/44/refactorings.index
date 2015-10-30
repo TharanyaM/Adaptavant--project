@@ -1,0 +1,62 @@
+1445765814907	Delete element
+1445766400841	Delete element
+1445770524402	Encapsulate field 'id'
+1445770548415	Encapsulate field 'entry'
+1445773590777	Move file
+1445774925491	Move file
+1445776154904	Move folder
+1445776482518	Move folder
+1445776583665	Move package
+1445776604335	Move 'style' to 'WEB-INF'
+1445777119334	Move 'style' to 'resources'
+1445778806133	Delete element
+1445778848632	Copy compilation units
+1445778882486	Copy compilation unit
+1445779059764	Delete element
+1445779079569	Delete element
+1445779089855	Delete element
+1445779100149	Delete element
+1445779109541	Delete element
+1445779124668	Copy compilation unit
+1445779136686	Copy compilation unit
+1445779148219	Delete element
+1445779155027	Delete element
+1445779574336	Encapsulate field 'groupId'
+1445779587544	Encapsulate field 'userId'
+1445779599832	Encapsulate field 'groupName'
+1445779853560	Encapsulate field 'groupList'
+1445779947871	Encapsulate field 'groupId'
+1445780183419	Encapsulate field 'date'
+1445780571459	Rename compilation unit 'Client.java'
+1445781618030	Copy file
+1445781641654	Copy file
+1445781652430	Rename resource 'confirmation'
+1445781872529	Delete element
+1445781883577	Delete element
+1445781897579	Delete element
+1445795868991	Encapsulate field 'endUser'
+1445803684823	Rename resource 'jsp'
+1445803801163	Delete element
+1445803838250	Rename resource 'add_entry'
+1445809311337	Encapsulate field 'id'
+1445809414311	Encapsulate field 'userId'
+1445809718124	Encapsulate field 'key'
+1445905223898	Encapsulate field 'key'
+1445905882618	Encapsulate field 'key'
+1445911813566	Encapsulate field 'userDate'
+1445921596629	Delete element
+1445921634975	Delete element
+1445921643446	Delete element
+1445921657301	Delete element
+1445925699267	Delete element
+1446094587106	Copy package
+1446094621599	Copy compilation unit
+1446094647112	Copy package
+1446094701869	Copy folder
+1446094740123	Copy folder
+1446095686978	Copy compilation unit
+1446095848216	Copy package
+1446096100613	Copy files
+1446096127262	Rename resource 'Project-servlet.xml'
+1446096704919	Copy folder
+1446096726988	Copy file

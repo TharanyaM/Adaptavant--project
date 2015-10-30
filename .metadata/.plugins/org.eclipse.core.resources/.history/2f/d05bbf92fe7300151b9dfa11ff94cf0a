@@ -1,0 +1,10 @@
+.task-list {
+  width: 250px;
+  height:250px;
+  float: left;
+  margin: 0 5px;
+  background-color: #c0c0c0;
+  min-height: 240px;
+  border-radius: 10px;
+  padding-bottom: 15px;
+}

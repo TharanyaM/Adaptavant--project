@@ -1,0 +1,12 @@
+package string;
+
+public class Unicode {
+	public static void main(String args[])
+	{
+		String st="well come to all";
+		System.out.println("print before unicode:"+st);
+		System.out.println("print after unicode:"+st.codePointBefore(1));
+		
+	}
+
+}

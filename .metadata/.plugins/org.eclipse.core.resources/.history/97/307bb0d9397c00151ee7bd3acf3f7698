@@ -1,0 +1,162 @@
+package com.project.in.controllers;
+
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.jdo.PersistenceManager;
+import javax.jdo.Transaction;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.jdo.Query;
+
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.project.in.PMF;
+import com.project.in.models.*;
+@Controller
+public class TodoListServlet {
+
+	private List<Entry> entryList = new ArrayList<Entry>();
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/todolist",method = RequestMethod.GET)
+	public String TodoList(ModelMap model, HttpServletRequest req, HttpSession session) {
+		
+		if(session.getAttribute("user")!=null)
+		{
+			model.addAttribute("user", session.getAttribute("user"));
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			Query q = pm.newQuery(Entry.class);
+			q.setFilter("userId == sessionUserId");
+			q.declareParameters("long sessionUserId");
+
+			List<Entry> results = null;
+
+			try {
+				results = (List<Entry>)q.execute(((User)session.getAttribute("user")).getId());
+
+				if (results.isEmpty()) {
+					model.addAttribute("entries", null);
+				} else {
+					model.addAttribute("entries", results);
+				}
+
+			} finally {
+				pm.close();
+			}
+			
+			return "home";
+		}
+		else {
+			
+			return "sessionexpire";
+		}
+		
+	}
+	
+	@RequestMapping(value="/todolist/add", method = RequestMethod.GET)
+	public String TodoListAdd(HttpServletRequest req, HttpSession session) {
+		
+		if(session.getAttribute("user")!=null)
+		{
+			return "add_entry"; // jsp page
+		}
+		else {
+			return "sessionexpire";
+		}
+	}
+	
+	
+	@RequestMapping(value="/todolist/add", method = RequestMethod.POST)
+	public String TodoListAdd(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+		if(session.getAttribute("user")!=null)
+		{
+		Entry entry = new Entry();
+		
+		entry.setDate(req.getParameter("date"));
+		entry.setEntry(req.getParameter("entry"));
+		entry.setGroupId(Integer.parseInt(req.getParameter("groupId")));
+		entry.setUserId(((User)session.getAttribute("user")).getId());
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			
+			tx.begin();
+			pm.makePersistent(entry);
+			tx.commit();
+		} finally {
+			if (tx.isActive())
+		    {
+		        tx.rollback();
+		    }
+			pm.close();
+		}
+		
+		return "redirect:/todolist"; // controller page
+		} else {
+			return "sessionexpire";
+		}
+	}
+	
+	@RequestMapping(value="/todolist/logout",method = RequestMethod.GET)
+	public String TodoListLogout(@PathVariable String key, ModelMap model, HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+		
+		if(session.getAttribute("user")!=null)
+		{
+			try {
+				session.setAttribute("user", null);
+				res.getWriter().println("<script>alert('Logout Done!'); </script>");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return "redirect:/index"; // controller
+		}
+		else {
+			return "sessionexpire";
+		}
+		
+	}
+	
+	
+	/*@RequestMapping(value="/todolist/delete/{key}", method = RequestMethod.GET)
+	public String TodoListDelete(@PathVariable String key, ModelMap model, HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+	
+		if(session.getAttribute("user")!=null)
+		{
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+			try {
+
+				Entry entry = pm.getObjectById(Entry.class, key);
+				tx.begin();
+				pm.deletePersistent(entry);
+				tx.commit();
+
+			} finally {
+				if (tx.isActive()) tx.rollback();
+				pm.close();
+			}
+			return "redirect:/todolist";
+		}
+		else {
+			return "sessionexpire";
+		}*/
+		
+	}

@@ -1,0 +1,13 @@
+package com.jdo.in;
+import javax.jdo.annotations.PersistenceCapable;
+import java.util.List;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable
+public class Table1 {
+	
+
+	    @Persistent(mappedBy = "table1")
+	    private List<StuDetails> studetails;
+
+}

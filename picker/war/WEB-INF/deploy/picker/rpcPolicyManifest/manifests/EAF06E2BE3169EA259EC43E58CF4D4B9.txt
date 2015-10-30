@@ -1,0 +1,2 @@
+serviceClass: com.picker.color.client.GreetingService
+path: F331EEDD86968E51B67A4484B3D114FC.gwt.rpc

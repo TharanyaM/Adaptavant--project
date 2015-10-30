@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+ <form action="/Register" method="Post" name="form1">
+ 
+  Name:<br>
+  <input type="text" name="name" id="name">
+  <br>
+  Email:<br>
+  <input type="text" name="email" id="email">
+  <br>
+  Password:<br>
+  <input type="password" name="password" id="password">
+  <br>
+  ReEnterPassword:<br>
+  <input type="password" name="reenterpassword" id="reenterpassword">
+  <br><br>
+  <input type="submit" value="submit">
+</form>
+
+</body>
+</html>

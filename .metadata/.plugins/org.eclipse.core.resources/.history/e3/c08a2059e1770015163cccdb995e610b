@@ -1,0 +1,111 @@
+package com.jdo.in;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.jdo.PersistenceManager;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.jdo.Query;
+
+import com.google.appengine.api.datastore.Key;
+
+
+
+@SuppressWarnings("serial")
+public class Login extends HttpServlet {
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException, InputMismatchException {
+		PrintWriter out=resp.getWriter();
+		
+	}
+	
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException, InputMismatchException {
+		PrintWriter out=resp.getWriter();
+        
+		
+		
+		//Calendar c=Calendar.getInstance();
+		//sd.setDate(c.getTime());
+		
+	       String email = req.getParameter("email");
+	        String password = req.getParameter("password");
+	        out.println(email + " " + password);
+	        StuDetails sd = new StuDetails();
+	        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy - hh:mm:ss");
+			sdf.setTimeZone(TimeZone.getTimeZone("IST"));
+			sd.setDate(sdf.format(new Date()));
+	       
+	        sd .setName("Important");
+	        sd.setEmail(email);
+	        sd.setPassword(password);
+	        String table1=req.getParameter("Table1");
+	        //
+	        Table1 ta=new Table1();
+	        ta.setName("Starred");
+	        ta.setEmail(email);
+	        ta.setPassword(password);
+	        ArrayList<Table1> Table1=new ArrayList<Table1>();
+	        Table1.add(ta);
+	        sd.setTable1(Table1);
+	        //
+	        Table2 ta1=new Table2();
+	        ta1.setName("If i have time");
+	        ta1.setEmail(email);
+	        ta1.setPassword(password);
+	        ArrayList<Table2> Table2=new ArrayList<Table2>();
+	        Table2.add(ta1);
+	        ta.setTable2(Table2);
+	        //
+	        Iterator<Table1> itr = Table1.iterator();
+	        while(itr.hasNext()){
+	            System.out.println(itr.next());
+	          Iterator<Table1>itr1=((Iterable<Table1>) itr).iterator();
+	          while(itr1.hasNext())
+	          {
+	        	  System.out.println(itr1.next());
+	          }
+	            ArrayList<Table1>it=new ArrayList<Table1>();
+	           // it.add(email);
+	           // it.add(password);
+	            System.out.println(itr1);
+	            System.out.println("jglwqfu");
+	        }
+	        //
+	
+	        PersistenceManager pm = PMF.get().getPersistenceManager();
+	       pm.makePersistent(sd);	  
+	       
+	       // Id used to get details
+	     /*
+	      * Object oid=pm.getObjectById(sd);
+	      System.out.println(oid);*/
+	      Query q = pm.newQuery(StuDetails.class,
+                   "email == '"+email+"'");
+q.declareParameters("String NameParam");
+
+
+List<StuDetails> results = (List<StuDetails>) q.execute(email);
+if (results.size() > 0) {
+	StuDetails std = results.get(0);
+	out.print(std);
+	if (std.getPassword().equals(password)) {
+		out.println("Login succesfully!");
+	} else {
+		out.println("Invalid Password or Email.");
+	}
+}
+
+}
+}

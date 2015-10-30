@@ -1,0 +1,31 @@
+package com.jdo.in;
+import StuDetails;
+import java.util.List;
+import java.util.Set;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import com.google.appengine.api.datastore.Key;
+import java.util.List;
+import javax.jdo.annotations.Extension;
+import javax.jdo.annotations.Order;
+import org.datanucleus.store.types.sco.simple.ArrayList;
+
+
+@PersistenceCapable
+public class Table1 {
+	@Persistent
+    private StuDetails stuDetails;
+	@Persistent
+    @Order(extensions = @Extension(vendorName="datanucleus",key="list-ordering", value="state asc, city asc"))
+    private List<Table1> table1Sets = new ArrayList<>();
+	 
+	 }
+
+	
+
+	 
+
+
+
+  

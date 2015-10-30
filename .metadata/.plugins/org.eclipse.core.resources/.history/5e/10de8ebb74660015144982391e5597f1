@@ -1,0 +1,12 @@
+package string;
+
+public class RemoveCha {
+	public static void main(String args[])
+	{
+		String str="hello world";
+		int a=removeCharAt(str,2);
+		
+		
+	}
+
+}

@@ -1,0 +1,85 @@
+package com.project.in.models;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.google.appengine.api.datastore.Key;
+@Component
+@Scope("session")
+
+@PersistenceCapable
+public class User {
+	
+
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	@Inject
+	private Long id;
+
+	@Persistent
+	@Inject
+	private String email;
+
+	@Persistent
+	private String pic;
+
+	@Persistent
+	private Date date;
+
+	@Persistent
+	private List<Group> groupList = new ArrayList<Group>();
+
+	
+
+	public void setId(long key2) {
+		this.id = key2;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String userEmail) {
+		this.email = userEmail;
+	}
+
+	public String getPicture() {
+		return pic;
+	}
+
+	public void setPicture(String pic) {
+		this.pic = pic;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date startDate) {
+		this.date = startDate;
+	}
+
+	public List<Group> getGroupList() {
+		return groupList;
+	}
+
+	public void setGroupList(List<Group> groupList) {
+		this.groupList = groupList;
+	}
+
+}

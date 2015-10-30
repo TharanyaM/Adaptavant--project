@@ -1,0 +1,35 @@
+package com.oauth1.in;
+
+import java.io.IOException;
+import javax.servlet.http.*;
+
+import java.io.IOException;
+import java.text.ParseException;
+
+import javax.servlet.http.*;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+
+@Controller
+public class Oauth1Servlet {
+	@RequestMapping(value = "/")
+	public String createForm() {
+		return "index";
+	}
+
+	@RequestMapping(value = "/oauth", method = RequestMethod.GET)
+	public ModelAndView helloWorld(@RequestParam("code") String code,
+			HttpServletRequest req, HttpServletResponse res) throws IOException, ParseException {
+
+		
+		System.out.println(code);
+		
+		return null;
+
+	}
+}

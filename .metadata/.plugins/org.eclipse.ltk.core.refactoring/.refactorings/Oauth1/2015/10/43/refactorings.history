@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Oauth1/war/WEB-INF/oauth1-servlet.xml&apos; to &apos;Oauth1-servlet.xml&apos;" description="Rename resource &apos;oauth1-servlet.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="war/WEB-INF/oauth1-servlet.xml" name="Oauth1-servlet.xml" stamp="1445533871571" updateReferences="true"/>
+</session>

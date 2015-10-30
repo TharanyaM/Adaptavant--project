@@ -1,0 +1,52 @@
+package com.jdo.in;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+import javax.jdo.PersistenceManager;
+import java.util.List;
+import javax.jdo.Query;
+
+
+@SuppressWarnings("serial")
+public class JdoServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+	        String name = req.getParameter("Name");
+	        String email = req.getParameter("Email");
+	        StuDetails sd=new StuDetails();
+	        sd.setName(name);
+	        sd.setEmail(email);
+	        PersistenceManager pm = PMF.get().getPersistenceManager();
+
+	        try {
+	        pm.makePersistent(sd);
+	        }finally {
+	        pm.close();
+	        }
+	       /* Query q = pm.newQuery(StuDetails.class);
+	        q.setFilter("studentName == studentNameParam");
+	        q.setOrdering("height desc");
+	        q.declareParameters("String studentNameParam");
+
+	        try {
+	          List<StuDetails> results = (List<StuDetails>) q.execute("tharanya");
+	          if (!results.isEmpty()) {
+	            for (StuDetails p : results) {
+	              System.out.println(p);// Process result p
+	            }
+	          } else {
+	            System.out.println("value not found");// Handle "no results" case
+	          }
+	        } finally {
+	          q.closeAll();
+	        }
+	      // resp.sendRedirect("/jdo/war/simple.jsp");*/
+	        
+		resp.setContentType("text/plain");
+		resp.getWriter().println("Login sucess");
+	}
+}

@@ -1,0 +1,15 @@
+package string;
+
+public class Concat {
+	public static void main(String args[])
+	{
+		String s="hi"+"tharan";
+		System.out.println(s);
+		String s1="hello";
+		String s2="tharani";
+		String s3=s1.concat(s2);
+		System.out.println(s3);
+		
+	}
+
+}

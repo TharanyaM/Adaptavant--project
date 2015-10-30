@@ -1,0 +1,35 @@
+package com.jdo.in;
+import java.util.List;
+import java.util.Set;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+import com.google.appengine.api.datastore.Key;
+
+
+@PersistenceCapable
+public class Table1 {
+	 @Persistent
+	    private StuDetails stuDetails;
+	 @Persistent
+	    private String DetailsTable1;
+	 @Persistent(mappedBy = "Table1")
+	    private Table1 detailsTable1;
+	 public String getDetailsTable1()
+	 {
+	 	return DetailsTable1;
+	 }
+	 public void setDetailsTable1(String detailsTable1)
+	 {
+	 	this.DetailsTable1=detailsTable1;
+	 }
+
+	
+
+	 
+
+}
+
+
+  

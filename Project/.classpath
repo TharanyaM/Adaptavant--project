@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/User.INTERN-4-WIN.000/Desktop/aravith/jar file/gson/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User.INTERN-4-WIN.000/Desktop/aravith/jar file/gson/json-simple-1.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring 4.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache Common"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

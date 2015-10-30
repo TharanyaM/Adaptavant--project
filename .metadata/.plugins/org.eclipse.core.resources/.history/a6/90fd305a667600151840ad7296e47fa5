@@ -1,0 +1,37 @@
+package com.jdo.in;
+import java.util.ArrayList;
+import java.util.Set;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+import com.google.appengine.api.datastore.Key;
+
+import java.util.List;
+
+import javax.jdo.annotations.Extension;
+import javax.jdo.annotations.Order;
+
+
+
+@PersistenceCapable
+public class Table1  {
+	@Persistent
+    private Table1 table1;
+	
+	public ArrayList<Table1>Table1=new ArrayList<Table1>();
+
+	public void setTable1(String Table1) {
+		
+	}
+	this.table1=table1;
+
+    }
+
+	
+
+	 
+
+
+
+  

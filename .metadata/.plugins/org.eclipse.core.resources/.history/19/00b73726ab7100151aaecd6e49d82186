@@ -1,0 +1,35 @@
+package com.jdo.in;
+
+import java.io.IOException;
+import java.io.IOException;
+import java.io.PrintWriter;
+ 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+import javax.jdo.PersistenceManager;
+
+@SuppressWarnings("serial")
+public class JdoServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+	        String studentname = req.getParameter("studentname");
+	        String collegename = req.getParameter("collegename");
+	        StuDetails sd=new StuDetails();
+	        sd.setstudentName(studentname);
+	        sd.setcollegeName(collegename);
+	        PersistenceManager pm = PMF.get().getPersistenceManager();
+
+	        try {
+	        pm.makePersistent(sd);
+	        }finally {
+	        pm.close();
+	        }
+	       resp.sendRedirect("/jdo/war/simple.jsp");
+	        
+		resp.setContentType("text/plain");
+		resp.getWriter().println("Hello, world");
+	}
+}

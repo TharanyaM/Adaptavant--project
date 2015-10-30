@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+
+
+div.row-container {
+	display:table;
+	width:100%;
+}
+div.row {
+	display:table-row;
+}
+
+div.col 
+{
+	display:table-cell;
+	padding:5px;
+	padding-left:15px;
+	padding-right:15px;
+}
+
+div.row:nth-child(odd)
+{
+	background-color:#f1f1f1;
+}
+
+div.row:nth-child(even)
+{
+	background-color:#f8f8f8;
+}

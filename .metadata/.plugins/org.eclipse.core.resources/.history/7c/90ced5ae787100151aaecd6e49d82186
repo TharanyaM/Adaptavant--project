@@ -1,0 +1,11 @@
+package com.jdo.in;
+
+public class pojoclass {
+
+	public static void main(String[] args) {
+	private String student;
+		// TODO Auto-generated method stub
+
+	}
+
+}

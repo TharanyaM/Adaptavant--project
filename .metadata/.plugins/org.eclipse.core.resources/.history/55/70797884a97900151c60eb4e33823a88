@@ -1,0 +1,458 @@
+package com.project.in;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+
+
+import com.google.gson.Gson;
+
+import javax.jdo.PersistenceManager;
+
+import javax.jdo.Query;
+
+import javax.servlet.ServletException;
+
+import javax.servlet.http.*;
+
+import org.datanucleus.api.jdo.exceptions.ClassNotPersistenceCapableException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class ProjectServlet {
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/data", method = RequestMethod.GET)
+	public ModelAndView helloWorld(HttpServletRequest req,
+			HttpServletResponse res) throws IOException, ParseException,
+			ServletException {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		
+		
+		return null;
+		
+	}
+
+	}
+
+		
+		/*String uName = req.getParameter("name");
+		Gson gson = new Gson();
+		String data = null;
+		List<Client> result = null;
+		Query q1 = pm.newQuery(Client.class);
+		q1.setFilter("name =='" + uName + "'");
+		result = (List<Client>) q1.execute();
+		System.out.println("=======" + result);
+
+		if (!result.isEmpty()) {
+
+			Iterator<Client> iter = result.iterator();
+			while (iter.hasNext()) {
+				Client currentUser = (Client) iter.next();
+				System.out.println(currentUser.getName());
+				System.out.println(currentUser.getListName());
+
+				ArrayList<ListDetail> list = (ArrayList<ListDetail>) currentUser
+						.getListName();
+
+				Iterator<ListDetail> iter1 = list.iterator();
+				System.out.println("##########################");
+				System.out.println(currentUser.listname);
+				while (iter1.hasNext()) {
+					ListDetail current = (ListDetail) iter1.next();
+					ArrayList<ToDO> list1 = (ArrayList<ToDO>) current.getToDO();
+					Iterator<ToDO> it1 = list1.iterator();
+
+					System.out.println(current.getName());
+					while (it1.hasNext()) {
+						ToDO curr = (ToDO) it1.next();
+						System.out.println("**************************");
+						System.out.println(curr.getName());
+						System.out.println("**********************");
+					}
+				}
+				System.out.println(currentUser);
+				data = gson.toJson(currentUser);
+			}
+
+		} else {
+			TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+			Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+			Date date = cal.getTime();
+
+			Client user = new Client();
+			user.setName(uName);
+			user.setDate(date);
+			ListDetail list = new ListDetail();
+			list.setListName("Main");
+			ToDO todo = new ToDO();
+			todo.setName("hhfsgitgyegydiughfsajg yvuitg syuiut y");
+			todo.setDate(date);
+			ToDO todo1 = new ToDO();
+			todo1.setName("gfseytyd yuiy dyrsuvuiesytifhjgdhjgh");
+			todo1.setDate(date);
+			ToDO todo2 = new ToDO();
+			todo2.setName("gfdurtyduytudyuyuv hybutyuyu");
+			todo2.setDate(date);
+			ArrayList<ToDO> todoname = new ArrayList<ToDO>();
+			todoname.add(todo);
+			todoname.add(todo1);
+			todoname.add(todo2);
+			list.setToDO(todoname);
+
+			ListDetail list1 = new ListDetail();
+			list1.setListName("Started");
+			ToDO todo3 = new ToDO();
+			todo3.setName("hhfsgitgyegydiughfsajg yvuitg syuiut y");
+			todo3.setDate(date);
+			ToDO todo4 = new ToDO();
+			todo4.setName("gfseytyd yuiy dyrsuvuiesytifhjgdhjgh");
+			todo4.setDate(date);
+			ToDO todo5 = new ToDO();
+			todo5.setName("gfdurtyduytudyuyuv hybutyuyu");
+			todo5.setDate(date);
+			ArrayList<ToDO> todoname1 = new ArrayList<ToDO>();
+			todoname1.add(todo3);
+			todoname1.add(todo4);
+			todoname1.add(todo5);
+			list1.setToDO(todoname1);
+
+			ListDetail list2 = new ListDetail();
+			list2.setListName("If i have time");
+			ToDO todo6 = new ToDO();
+			todo6.setName("hhfsgitgyegydiughfsajg yvuitg syuiut y");
+			todo6.setDate(date);
+			ToDO todo7 = new ToDO();
+			todo7.setName("gfseytyd yuiy dyrsuvuiesytifhjgdhjgh");
+			todo7.setDate(date);
+			ToDO todo8 = new ToDO();
+			todo8.setName("gfdurtyduytudyuyuv hybutyuyu");
+			todo8.setDate(date);
+			ArrayList<ToDO> todoname2 = new ArrayList<ToDO>();
+			todoname2.add(todo6);
+			todoname2.add(todo7);
+			todoname2.add(todo8);
+			System.out.println(todoname);
+			list2.setToDO(todoname2);
+			ArrayList<ListDetail> listname = new ArrayList<ListDetail>();
+			listname.add(list);
+			listname.add(list1);
+			listname.add(list2);
+
+			user.setListName(listname);
+
+			pm.makePersistent(user);
+
+			req.getRequestDispatcher("/register").include(req, res);
+
+		}
+
+		pm.close();
+		return new ModelAndView("data", "user", data);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView hello(HttpServletRequest req, HttpServletResponse res)
+			throws IOException, ParseException, java.text.ParseException,
+			ClassNotPersistenceCapableException,ServletException{
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		String uName = req.getParameter("name");
+		Gson gson = new Gson();
+		String data = null;
+		List<Client> results = null;
+		Query q = pm.newQuery(Client.class);
+		q.setFilter("name =='" + uName + "'");
+		try {
+			results = (List<Client>) q.execute();
+
+			if (results != null) {
+				Iterator<Client> it = results.iterator();
+				while (it.hasNext()) {
+					Client currentUser = (Client) it.next();
+					ArrayList<ListDetail> name = (ArrayList<ListDetail>) currentUser
+							.getListName();
+					Iterator<ListDetail> iter1 = name.iterator();
+					System.out.println("##########################");
+					System.out.println(currentUser.listname);
+					while (iter1.hasNext()) {
+						ListDetail current = (ListDetail) iter1.next();
+						ArrayList<ToDO> todoName = (ArrayList<ToDO>) current
+								.getToDO();
+						Iterator<ToDO> it1 = todoName.iterator();
+
+						System.out.println(current.getName());
+						while (it1.hasNext()) {
+							ToDO curr = (ToDO) it1.next();
+							System.out.println("**************************");
+							System.out.println(curr.getName());
+							System.out.println("**********************");
+						}
+					}
+
+					data = gson.toJson(currentUser);
+				}
+
+			}
+		} finally {
+
+			pm.close();
+
+		}
+		return new ModelAndView("data", "user", data);
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/oauth", method = RequestMethod.GET)
+	public ModelAndView helloWorld(@RequestParam("code") String code,
+			HttpServletRequest req, HttpServletResponse res)
+			throws IOException, ParseException, java.text.ParseException,
+			ClassNotPersistenceCapableException, ServletException {
+
+		String param1 = "value1";
+		String param2 = "value2";
+
+		// for get authorization code
+		String query = String.format("param1=%s&param2=%s",
+				URLEncoder.encode(param1, "UTF-8"),
+				URLEncoder.encode(param2, "UTF-8"));
+		String redirect_url = "http://localhost:8888/oauth";
+		String clientId = "482631779289-nogvfvhsce52astjajqnh526ia4a75e0.apps.googleusercontent.com";
+		String clientSecret = "eHfeqw_GLcdD4ILqI-qGBQzZ";
+
+		String grant_type = "authorization_code";
+		// for get token_access
+		URLConnection connection = new URL(
+				"https://www.googleapis.com/oauth2/v3/token?client_id="
+						+ clientId + "&client_secret=" + clientSecret
+						+ "&redirect_uri=" + redirect_url + "&grant_type="
+						+ grant_type + "&code=" + code).openConnection();
+		connection.setDoOutput(true); // Triggers POST.
+		// connection.setRequestProperty("Accept-Charset", "UTF-8");
+		connection.setRequestProperty("Content-Type",
+				"application/x-www-form-urlencoded;charset=");
+		String charset = "UTF-8";
+		try (OutputStream output = connection.getOutputStream()) {
+			output.write(query.getBytes(charset));
+		}
+
+		InputStream response = connection.getInputStream();
+		System.out.println(response);
+		StringBuilder str = new StringBuilder();
+		Gson gson = new Gson();
+		String data = null;
+		for (int c1 = response.read(); c1 != -1; c1 = response.read()) {
+			char j = (char) c1;
+			str.append((char) j);
+
+		}
+		String s = new String(str);
+		JSONObject json = (JSONObject) new JSONParser().parse(s);
+		String access_token = json.get("access_token").toString();
+		System.out.println(json.get("access_token"));
+
+		response.close();
+
+		// for get user info
+		URLConnection conn = new URL(
+				"https://www.googleapis.com/oauth2/v3/userinfo?access_token="
+						+ access_token).openConnection();
+		conn.setDoOutput(true); // Triggers POST.
+		// connection.setRequestProperty("Accept-Charset", "UTF-8");
+		conn.setRequestProperty("Content-Type",
+				"application/x-www-form-urlencoded;charset=");
+
+		try (OutputStream output1 = conn.getOutputStream()) {
+			output1.write(query.getBytes(charset));
+		}
+		StringBuilder str1 = new StringBuilder();
+		InputStream resp = conn.getInputStream();
+		for (int c = resp.read(); c != -1; c = resp.read()) {
+			char j = (char) c;
+			str1.append((char) j);
+
+		}
+		String userInfo = new String(str1);
+		System.out.println(str1);
+		JSONObject j = (JSONObject) new JSONParser().parse(userInfo);
+		System.out.println(j.get("picture"));
+		String userName = (String) j.get("name");
+		System.out.println(userName);
+		String pic = (String) j.get("picture");
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		List<Client> result = null;
+		Query q1 = pm.newQuery(Client.class);
+		q1.setFilter("name =='" + userName + "'");
+		result = (List<Client>) q1.execute();
+		System.out.println("" + result);
+		if (!result.isEmpty()) {
+
+			Iterator<Client> iter = result.iterator();
+			while (iter.hasNext()) {
+				Client currentUser = (Client) iter.next();
+				System.out.println(currentUser.getName());
+				System.out.println(currentUser.getListName());
+
+				ArrayList<ListDetail> list = (ArrayList<ListDetail>) currentUser
+						.getListName();
+				Iterator<ListDetail> iter1 = list.iterator();
+				System.out.println("##########################");
+				System.out.println(currentUser.listname);
+				while (iter1.hasNext()) {
+					ListDetail current = (ListDetail) iter1.next();
+					ArrayList<ToDO> list1 = (ArrayList<ToDO>) current.getToDO();
+					Iterator<ToDO> it1 = list1.iterator();
+
+					System.out.println(current.getName());
+					while (it1.hasNext()) {
+						ToDO curr = (ToDO) it1.next();
+						System.out.println("**************************");
+						System.out.println(curr.getName());
+						System.out.println("**********************");
+					}
+				}
+			}
+		} else {
+			System.out.println("******************");
+			Client user = new Client();
+	
+
+			TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+			Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+			Date date = cal.getTime();
+			user.setDate(date);
+			user.setName(userName);
+			user.setPicture(pic);
+			
+
+			ListDetail list = new ListDetail();
+			list.setListName("Main");
+			ToDO todo = new ToDO();
+			todo.setName("hhfsgitgyegydiughfsajg yvuitg syuiut y");
+			todo.setDate(date);
+			ToDO todo1 = new ToDO();
+			todo1.setName("gfseytyd yuiy dyrsuvuiesytifhjgdhjgh");
+			todo1.setDate(date);
+			ToDO todo2 = new ToDO();
+			todo2.setName("gfdurtyduytudyuyuv hybutyuyu");
+			todo2.setDate(date);
+			ArrayList<ToDO> todoname = new ArrayList<ToDO>();
+			todoname.add(todo);
+			todoname.add(todo1);
+			todoname.add(todo2);
+			list.setToDO(todoname);
+
+			ListDetail list1 = new ListDetail();
+			list1.setListName("Started");
+			ToDO todo3 = new ToDO();
+			todo3.setName("hhfsgitgyegydiughfsajg yvuitg syuiut y");
+			todo3.setDate(date);
+			ToDO todo4 = new ToDO();
+			todo4.setName("gfseytyd yuiy dyrsuvuiesytifhjgdhjgh");
+			todo4.setDate(date);
+			ToDO todo5 = new ToDO();
+			todo5.setName("gfdurtyduytudyuyuv hybutyuyu");
+			todo5.setDate(date);
+			ArrayList<ToDO> todoname1 = new ArrayList<ToDO>();
+			todoname1.add(todo3);
+			todoname1.add(todo4);
+			todoname1.add(todo5);
+			list1.setToDO(todoname1);
+
+			ListDetail list2 = new ListDetail();
+			list2.setListName("If i have time");
+			ToDO todo6 = new ToDO();
+			todo6.setName("hhfsgitgyegydiughfsajg yvuitg syuiut y");
+			todo6.setDate(date);
+			ToDO todo7 = new ToDO();
+			todo7.setName("gfseytyd yuiy dyrsuvuiesytifhjgdhjgh");
+			todo7.setDate(date);
+			ToDO todo8 = new ToDO();
+			todo8.setName("gfdurtyduytudyuyuv hybutyuyu");
+			todo8.setDate(date);
+			ArrayList<ToDO> todoname2 = new ArrayList<ToDO>();
+			todoname2.add(todo6);
+			todoname2.add(todo7);
+			todoname2.add(todo8);
+
+			list2.setToDO(todoname2);
+			ArrayList<ListDetail> listname = new ArrayList<ListDetail>();
+			listname.add(list);
+			listname.add(list1);
+			listname.add(list2);
+			user.setListName(listname);
+
+			pm.makePersistent(user);
+
+			req.getRequestDispatcher("/register1").include(req, res);
+
+		}
+
+		pm.close();
+		return new ModelAndView("data", "user", data);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/register1", method = RequestMethod.GET)
+	public ModelAndView hello1(HttpServletRequest req, HttpServletResponse res)
+			throws IOException, ParseException, java.text.ParseException,
+			ClassNotPersistenceCapableException {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		String uName = req.getParameter("name");
+		Gson gson = new Gson();
+		String data = null;
+		List<Client> results = null;
+		Query q = pm.newQuery(Client.class);
+		q.setFilter("name =='" + uName + "'");
+		try {
+			results = (List<Client>) q.execute();
+
+			if (results != null) {
+				Iterator<Client> it = results.iterator();
+				while (it.hasNext()) {
+					Client currentUser = (Client) it.next();
+					ArrayList<ListDetail> name = (ArrayList<ListDetail>) currentUser
+							.getListName();
+					Iterator<ListDetail> iter1 = name.iterator();
+					System.out.println("##########################");
+					System.out.println(currentUser.listname);
+					while (iter1.hasNext()) {
+						ListDetail current = (ListDetail) iter1.next();
+						ArrayList<ToDO> todoName = (ArrayList<ToDO>) current
+								.getToDO();
+						Iterator<ToDO> it1 = todoName.iterator();
+
+						System.out.println(current.getName());
+						while (it1.hasNext()) {
+							ToDO curr = (ToDO) it1.next();
+							System.out.println("**************************");
+							System.out.println(curr.getName());
+							System.out.println("**********************");
+						}
+					}
+
+					data = gson.toJson(currentUser);
+				}
+
+			}
+		} finally {
+
+			pm.close();
+
+		}
+		return new ModelAndView("data", "user", data);
+	}
+}*/

@@ -1,0 +1,14 @@
+package date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class DateFormate {
+	public static void main(String args[])
+	{
+		Date date=new Date();
+		String st="hh:mm:ss a";
+		 std=new s(st);
+		
+	}
+
+}

@@ -1,0 +1,74 @@
+package com.project.in.models;
+
+import java.util.Date;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
+public class Entry {
+	
+	@Persistent
+	private String entry;
+	
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private int entryId;
+	
+	@Persistent
+	private int groupId;
+	
+	@Persistent
+	private String date;
+	
+	@Persistent
+	private long userd;
+	
+	public Entry()
+	{
+		
+	}
+	public Entry(int groupId, int entryId, String entry) 
+	{
+		this.groupId = groupId;
+		this.entryId = entryId;
+		this.entry = entry;
+	}
+	
+	public int getEntryId() {
+		return entryId;
+	}
+	public void setEntryId(int entryId) {
+		this.entryId = entryId;
+	}
+	public String getEntry() {
+		return entry;
+	}
+	public void setEntry(String entry) {
+		this.entry = entry;
+	}
+
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+
+}

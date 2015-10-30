@@ -1,0 +1,88 @@
+package com.jdo.in;
+
+import com.google.appengine.api.datastore.Blob;
+
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+import java.util.Set;
+import com.google.appengine.api.datastore.Key;
+@PersistenceCapable
+public class StuDetails {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+	@Persistent
+	private String Name;
+	@Persistent
+	private String Adress;
+	@Persistent
+	private String Email;
+	@Persistent
+	private String Password;
+	@Persistent(mappedBy = "employee")
+    private List<Table1> table1Sets;
+	
+	
+	
+	/*public void setKey(Key key) {
+        this.key = key;
+    }*/
+	 	public String getName() {
+		return Name;
+
+	}
+
+	public void setName(String Name) {
+		this.Name = Name;
+	}
+public String getAdress()
+{
+	return Adress;
+}
+public void setAdress(String Adress)
+{
+	this.Adress=Adress;
+}
+	public String getEmail() {
+		return Email;
+
+	}
+
+	public void setEmail(String Email) {
+		this.Email = Email;
+	}
+	public String getPassword()
+	{
+		return Password;
+	}
+	public void setPassword(String Password)
+	{
+		this.Password=Password;
+	}
+	@Persistent
+    private Table1 table1;
+
+    Table1 getTable1() {
+        return table1;
+    }
+    void setTable1(Table1 table1) {
+        this.table1 = table1;
+    }
+
+   
+	/*public Blob getImage()
+	{
+		return image;
+	}
+	public void setImage(Blob image)
+	{
+		this.image=image;
+	}*/
+	
+}

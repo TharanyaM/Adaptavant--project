@@ -1,0 +1,3 @@
+# Module aa
+# RPC service class, partial path of RPC policy file
+com.aa.color.client.GreetingService, 66FE461A07F69D6ABBD3B0EA9D8C0248.gwt.rpc

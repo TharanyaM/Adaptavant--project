@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>google</title>
+</head>
+<body>
+  <div align="right">
+      
+    <table cellpadding="0" width="10" cellspacing="0">
+
+
+<tr>
+    <td>
+        <a href="https://mail.google.com/mail/?tab=wm" style="text-decoration:blink;
+           "style=padding:0px width="20" height="50" border="0"> Gmail&nbsp;&nbsp;&nbsp; </a>
+    </td>
+
+
+
+
+<td>
+    <a href="https://www.google.co.in/imghp?hl=en&tab=wi&ei=peX2VeWbA8f8ugTt67KgDA&ved=0CBIQqi4oAQ" 
+       style="text-decoration:blink;" width="128" height="128" border="0">  images&nbsp;&nbsp;&nbsp;  </a>
+    </td>
+
+
+
+<td>
+    <a href="http://www.google.co.in/intl/en/options/">
+        <img src="C:\Pics\H.jpg" alt="Mountain View" width="25" height="30" border="0"></a>
+    </td>
+
+
+
+
+
+
+
+<td>
+    <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.co.in/">
+<img src="C:\Pics\A.jpg" alt="Mountain View" width="50" height="60" border="0"></a>
+    </td>
+      </tr>
+</table></div>
+    
+   
+    
+<center>
+<table>
+<tr>
+<img src="https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
+     style="width=10px;height=1px;text-align:center;margin:150px 50px -35px 80px;padding:0px;">
+
+ 
+</tr>
+<tr>
+<td > 
+    <input type="text" size="150" style=" margin:30px; padding:20px;WIDTH: 590px; HEIGHT: 30px"placeholder="Search Google or type URL">
+    </td>
+</tr>
+
+<tr>
+<td> 
+    <input type="submit" value="Google Search" title="Subscribe" style="margin:3px 50px 10px 198px;padding:0px 3px;width: 150px; height: 35px"/> 
+    
+    </td>
+<td> 
+    <a href="https://www.google.com/doodles"> 
+        <input type="submit" value="I'm Feeling Lucky" title="Subscribe" style=" margin:3px 50px 10px -300px;padding:0px 3px;width: 150px; height: 35px"/></a>
+    </td>
+    </tr>
+<tr>
+<td>
+    Google.co.in offered in:<a href="https://www.google.co.in/"style="text-decoration:blink">English &#2980;&#2990;&#3007;&#2996;&#3021;</a>
+    </td>
+</tr>
+</table>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+package com.jdo.in;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.jdo.PersistenceManager;
+
+import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.jdo.Query;
+
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+
+
+@SuppressWarnings("serial")
+public class JdoServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException, InputMismatchException {
+		PrintWriter out=resp.getWriter();
+		 
+	        String name = req.getParameter("Name"); 
+	        String adress=req.getParameter("Adress");
+	        String email = req.getParameter("Email");
+	        String password=req.getParameter("Password");
+	        StuDetails sd=new StuDetails();
+	        sd.setName(name);
+	        sd.setAdress(adress);
+	        sd.setEmail(email);
+	        sd.setPassword(password);
+	       PersistenceManager pm = PMF.get().getPersistenceManager();
+	       pm.makePersistent(sd);
+	       resp.setContentType("text/html");
+	       PrintWriter pw = resp.getWriter();
+	       HttpSession ssn = req.getSession();
+	       if(ssn != null){
+	       pw.println("Your session Id is : ");
+	       String ssnId = ssn.getId();
+	       System.out.println(ssnId);
+	       }
+	       else
+	       {
+	       pw.println("Your session is not created yet");
+	       }
+	       // Id used to get details
+	     /* Object oid=pm.getObjectById(sd);
+	      System.out.println(oid);*/
+	      Query q = pm.newQuery(StuDetails.class,
+                   "Name == '"+name+"'");
+q.declareParameters("String NameParam");
+
+
+List<StuDetails> results = (List<StuDetails>) q.execute(name);
+Iterator ite=results.iterator();
+while(ite.hasNext())
+{
+	StuDetails sd1=(StuDetails )ite.next();
+	System.out.println("The user name"+sd1.getName()+"and email id"+sd1.getEmail());
+	
+
+}
+/*Table1 locat = new Table1();
+List<Table1> locations = ...;
+for (int j = 0; j < coordinate.length; j++) {
+    // ...
+    locat.setCoordinate(loc);
+    locations.add(locat);
+}*/
+	/* Key key = KeyFactory.createKey(StuDetails.class.getSimpleName(), "hello");
+
+	        @SuppressWarnings("unchecked")
+		StuDetails sd1=pm.getObjectById(StuDetails.class,"aglub19hcHBfaWRyFwsSClN0dURldGFpbHMYgICAgICA0AgM");
+	        
+	        System.out.println("the user name is "+sd1.getName()+" and password "+sd1.getPassword()+" and Email id"+sd1.getEmail());*/
+	        
+	       /* sd1.get(0);
+	        Iterator<StuDetails> user=sd1.iterator();
+	        while(user.hasNext()){
+	        	System.out.println(user.next());
+	        }*/
+	     //sd.setKey(key);
+	       
+	      /*  try {
+	        pm.makePersistent(sd);
+	        }finally {
+	        pm.close();
+	        }
+	        
+	        
+	        
+	       /* Query q = pm.newQuery(StuDetails.class);
+	        q.setFilter("studentName == studentNameParam");
+	        q.setOrdering("height desc");
+	        q.declareParameters("String studentNameParam");
+
+	        try {
+	          List<StuDetails> results = (List<StuDetails>) q.execute("tharanya");
+	          if (!results.isEmpty()) {
+	            for (StuDetails p : results) {
+	              System.out.println(p);// Process result p
+	            }
+	          } else {
+	            System.out.println("value not found");// Handle "no results" case
+	          }
+	        } finally {
+	          q.closeAll();
+	        }
+	        	resp.setContentType("text/plain");
+	      // resp.sendRedirect("/jdo/war/simple.jsp");*/
+	       
+	
+		req.getRequestDispatcher("todo.html").include(req,resp);
+		//out.println("Loggin Sucessfully");
+		
+		
+	}
+
+	private StuDetails getKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private PersistenceManager getPMF() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

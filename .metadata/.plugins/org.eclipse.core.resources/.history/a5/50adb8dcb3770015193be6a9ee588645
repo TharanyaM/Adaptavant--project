@@ -1,0 +1,97 @@
+package com.jdo.in;
+import com.google.appengine.api.datastore.Blob;
+import java.util.ArrayList;
+
+import com.google.appengine.api.datastore.Key;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+import java.util.Set;
+import com.google.appengine.api.datastore.Key;
+@PersistenceCapable
+public class StuDetails {
+	
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+	@Persistent
+	private String email;
+	@Persistent
+	private String password;
+	@Persistent
+	private String name;
+	@Persistent
+	private String time;
+	@Persistent
+    private ArrayList<Table1> table1;
+	
+	@Persistent
+	public ArrayList<Table1>tab1=new ArrayList<Table1>();
+    
+	
+	
+	
+	
+	/*public void setKey(Key key) {
+        this.key = key;
+    }*/
+	public String getName() {
+		return name;
+
+	}
+
+	public void setName(String Name) {
+		this.name = Name;
+	}
+	
+	public String getEmail() {
+		return email;
+
+	}
+
+	public void setEmail(String Email) {
+		this.email = Email;
+	}
+	public String getPassword()
+	{
+		return password;
+	}
+	public void setPassword(String Password)
+	{
+		this.password=Password;
+	}
+	public ArrayList<Table1> getTable1()
+	{
+		return table1;
+	}
+
+	public  void setTable1 (ArrayList<Table1> Table1 )
+	{
+		this.table1=Table1;
+	}
+ 
+	
+   
+	/*public Blob getImage()
+	{
+		return image;
+	}
+	public void setImage(Blob image)
+	{
+		this.image=image;
+	}*/
+	
+    @Override
+    public String toString() {
+    	return  "PASSWORD:" + password + "EMAIL:" + email;
+    }
+
+	public void setTable1(String Table1) {
+		// TODO Auto-generated method stub
+		
+	}
+    }
+    
+

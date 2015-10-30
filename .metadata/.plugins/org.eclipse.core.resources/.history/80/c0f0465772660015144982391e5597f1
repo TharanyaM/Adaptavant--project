@@ -1,0 +1,19 @@
+package string;
+
+public class StringLastIndex {
+	public static void main(String args[])
+	{
+		String ab="hello world,Hello World";
+		int cd=ab.lastIndexOf("hAI");
+		if(cd==-1)
+		{
+			System.out.println("INDEX  not found");
+		
+		}
+		else
+		{
+			System.out.println("last Indexof hello is:"+cd);
+		}
+	}
+
+}

@@ -1,0 +1,82 @@
+package com.project.in.models;
+
+import java.util.Date;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
+public class Entry {
+	
+	@Persistent
+	private String entry;
+	
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+	
+	@Persistent
+	private int groupId;
+	
+	@Persistent
+	private String date;
+	
+	@Persistent
+	private long userId;
+	
+	public Entry()
+	{
+		
+	}
+	
+	public Entry(int userId, int groupId, String entry) 
+	{
+		this.userId = userId;
+		this.groupId = groupId;
+		this.entry = entry;
+	}
+	
+	public String getEntry() {
+		return entry;
+	}
+	public void setEntry(String entry) {
+		this.entry = entry;
+	}
+
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public long getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+	public Key getKey() {
+		return key;
+	}
+	public void setKey(Key key) {
+		this.key = key;
+	}
+	
+
+}

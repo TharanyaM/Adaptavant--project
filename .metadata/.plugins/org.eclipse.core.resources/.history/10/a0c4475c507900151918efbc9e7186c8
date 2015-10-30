@@ -1,0 +1,100 @@
+package com.jdo.in;
+import com.google.appengine.api.datastore.Blob;
+import java.util.Date;
+
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import java.util.Set;
+
+import com.google.appengine.api.datastore.Key;
+@PersistenceCapable
+public class StuDetails {
+	
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+	@Persistent
+	private Long id;
+	@Persistent
+	private String email;
+	@Persistent
+	private String password;
+	@Persistent
+	private String name;
+	@Persistent
+	private Date date;
+	@Persistent
+	public ArrayList<Table1>table1=new ArrayList<Table1>();
+    public void setId(long key2) 
+	{
+		this.id = key2;
+	}
+
+	public long getId() 
+	{
+		return id;
+	}
+
+	public String getName() {
+		return name;
+
+	}
+
+	public void setName(String Name) {
+		this.name = Name;
+	}
+	
+	public String getEmail() {
+		return email;
+
+	}
+
+	public void setEmail(String Email) {
+		this.email = Email;
+	}
+	public String getPassword()
+	{
+		return password;
+	}
+	public void setPassword(String Password)
+	{
+		this.password=Password;
+	}
+	public void setTable1(ArrayList<Table1> table1) {
+		this.table1 = table1;
+	}
+
+	List<Table1> getTable1() {
+		return table1;
+	}
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date stuDetailsDate) {
+		this.date = stuDetailsDate;
+	}
+ 
+	
+   
+	
+	
+   /* @Override
+    public String toString() {
+    	return  "PASSWORD:" + password + "EMAIL:" + email;
+    }*/
+
+	
+    }
+    
+

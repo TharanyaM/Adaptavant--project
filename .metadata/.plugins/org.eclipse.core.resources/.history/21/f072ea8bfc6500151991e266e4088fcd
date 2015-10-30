@@ -1,0 +1,15 @@
+package string;
+
+public class StringCompare {
+	public static void main(String args[])
+	{
+		String s1="subara";
+		String s2="tharan";
+		String s3="";
+		String s="tharan";
+		System.out.println(s1.compareTo(s2));
+		System.out.println(s.compareTo(s2));
+		System.out.println(s.compareTo(s3));
+	}
+
+}

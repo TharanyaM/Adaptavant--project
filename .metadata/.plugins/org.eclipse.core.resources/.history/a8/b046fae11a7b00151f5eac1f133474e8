@@ -1,0 +1,38 @@
+package com.project.in;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+//@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
+public class Entry {
+	
+	//@Persistent
+	private String entry;
+	//@PrimaryKey
+	//@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
+	private int id;
+	
+	public Entry(int id, String entry) 
+	{
+		this.id = id;
+		this.entry = entry;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getEntry() {
+		return entry;
+	}
+	public void setEntry(String entry) {
+		this.entry = entry;
+	}
+	
+
+}

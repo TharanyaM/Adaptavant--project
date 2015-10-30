@@ -1,0 +1,12 @@
+package string;
+
+public class RegionMatch {
+	public static void main(String args[])
+	{
+		String st="hello frds";
+		String s="Hill come";
+		boolean match=st.regionMatches(0,s,0,0);
+		System.out.println("regions:"+match);
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.project.in.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class RegistrationServlet {
+
+	@RequestMapping(value="/signup",method = RequestMethod.GET)
+	public String signup()
+	{
+		return "signup";
+		
+	}
+	
+	
+	@RequestMapping(value="/registration", method = RequestMethod.POST)
+	public String confirmation()
+	{
+		return "confirm";
+	}
+		
+}

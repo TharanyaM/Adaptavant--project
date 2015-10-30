@@ -1,0 +1,77 @@
+package com.todo.in;
+import java.util.ArrayList;
+import java.util.Set;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+import com.google.appengine.api.datastore.Key;
+
+import java.util.List;
+
+import javax.jdo.annotations.Extension;
+import javax.jdo.annotations.Order;
+
+
+
+@PersistenceCapable
+public class Table1  {
+	@Persistent
+	private String email;
+	@Persistent
+	private String password;
+	@Persistent
+	private String name;
+	@Persistent
+    private ArrayList<Table2> table2;
+	public ArrayList<Table2>tab2=new ArrayList<Table2>();
+
+	
+	public String getName() {
+		return name;
+
+	}
+
+	public void setName(String Name) {
+		this.name = Name;
+	}
+	public String getEmail() {
+		return email;
+
+	}
+
+	public void setEmail(String Email) {
+		this.email = Email;
+	}
+	public String getPassword()
+	{
+		return password;
+	}
+	public void setPassword(String Password)
+	{
+		this.password=Password;
+	}
+	
+
+	public ArrayList<Table2> getTable2()
+	{
+		return table2;
+	}
+
+	public  void setTable2 (ArrayList<Table2> Table2 )
+	{
+		this.table2=Table2;
+	}
+
+	
+
+}
+	 
+
+
+
+
+
+
+
+  

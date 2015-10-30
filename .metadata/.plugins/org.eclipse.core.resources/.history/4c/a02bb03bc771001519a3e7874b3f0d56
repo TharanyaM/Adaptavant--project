@@ -1,0 +1,16 @@
+/*package collection;
+import java.util.*;
+
+public class ArrayList {
+	public static void main(String args[])
+	{
+	/*	ArrayList ab=new ArrayLis();
+		ab.add("suba");
+		ab.add(10);
+		ab.add(null);
+		System.out.println(ab);
+		
+		
+	}
+
+}

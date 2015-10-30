@@ -1,0 +1,84 @@
+<html>
+<head>
+<link rel="styleSheet" type="text/css" href="box.css">
+<title>paint</title>
+    <script type="text/javascript">
+
+function colorRed()
+{
+  if (document.getElementById("pa").style.color == "red") {
+    document.getElementById("pa").style.backgroundColor = "red";
+      document.getElementById("pa").style.color = "white";
+     }
+  else {
+    document.getElementById("pa").style.color = "red";
+    document.getElementById("pa").style.backgroundColor = "white"; 
+
+  }
+}
+        function colorBlue()
+{
+  if (document.getElementById("pa").style.color == "blue") {
+    document.getElementById("pa").style.color = "white";
+    document.getElementById("pa").style.backgroundColor = "blue"; }
+  else {
+    document.getElementById("pa").style.color = "blue";
+    document.getElementById("pa").style.backgroundColor = "white"; 
+  }
+}
+        function colorGreen()
+{
+  if (document.getElementById("pa").style.color == "green") {
+    document.getElementById("pa").style.color = "white";
+    document.getElementById("pa").style.backgroundColor = "green"; }
+  else {
+    document.getElementById("pa").style.color = "green";
+    document.getElementById("pa").style.backgroundColor = "white"; 
+  }
+}
+        function color()
+{
+  if (document.getElementById("pa").style.color == "yellow") {
+    document.getElementById("pa").style.color = "white";
+    document.getElementById("pa").style.backgroundColor = "yellow"; }
+  else {
+    document.getElementById("pa").style.color = "yellow";
+    document.getElementById("pa").style.backgroundColor = "white"; 
+  }
+}
+</script>
+</head>
+<body>
+    <div id="header">
+<h1> Paint Page</h1>
+         <marquee direction="left" bgcolor="#d9d9ff" width="100%">Well Come</marquee>
+</div>
+   
+<table class="h"  border="1" style="width:5%">
+    <h2 style="color:brown; padding:10px;"> Select Color</h2>
+
+    <tr> 
+    <td ><input type="button" value="          " name="B1" onclick="colorRed()"class="a"></td>
+ 
+    <td><input type="button" value="          " name="B2" onclick="colorBlue()"class="b"></td>
+ </td>
+    </tr>
+    <tr> 
+    <td><input type="button" value="          " name="B3" onclick="colorGreen()" class="c"></td>
+ </td>
+    <td> <input type="button" value="          " name="B4" onclick="color()"class="d"></td>
+</td>
+    </tr>
+    </table>
+
+<div class="f">
+    <h2 id="hh">Color changed Successfully! </h2>
+ <p id="pa"> </p>
+    
+    <div id="footer">
+         <marquee direction="right" bgcolor="#d9d9ff" width="100%">Thank You!!</marquee>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+package com.data;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
+public class ToDO {
+
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+
+	@Persistent
+	private String name;
+
+	@Persistent
+	private Date date;
+
+	public void setName(String listName) {
+		this.name = listName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date hireDate) {
+		this.date = hireDate;
+	}
+
+}

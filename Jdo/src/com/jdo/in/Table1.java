@@ -1,0 +1,54 @@
+package com.jdo.in;
+import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
+
+
+@PersistenceCapable
+public class Table1  {
+	@Persistent
+	private String email;
+	@Persistent
+	private String name;
+	public ArrayList<Table2>table2=new ArrayList<Table2>();
+
+	
+	public String getName() {
+		return name;
+
+	}
+
+	public void setName(String Name) {
+		this.name = Name;
+	}
+	public String getEmail() {
+		return email;
+
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setTable2(ArrayList<Table2> todo) {
+		this.table2 = todo;
+	}
+
+	List<Table2> getTable2() {
+		return table2;
+	}
+}
+
+	 
+
+
+
+  

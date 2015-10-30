@@ -1,0 +1,52 @@
+package com.jdo.in;
+
+import java.util.ArrayList;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
+
+@PersistenceCapable
+public class Table3 {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+	@Persistent
+	private String email;
+	@Persistent
+	private String password;
+	@Persistent
+    private String table;
+	@Persistent
+	public ArrayList<Table3>tab=new ArrayList<Table3>();
+	public String getEmail() {
+		return email;
+
+	}
+
+	public void setEmail(String Email) {
+		this.email = Email;
+	}
+	public String getPassword()
+	{
+		return password;
+	}
+	public void setPassword(String Password)
+	{
+		this.password=Password;
+	}
+	
+
+	public String getTable2()
+	{
+        return table;
+    }
+    void setTable1(String Table) {
+        this.table = Table;
+    }
+
+
+}

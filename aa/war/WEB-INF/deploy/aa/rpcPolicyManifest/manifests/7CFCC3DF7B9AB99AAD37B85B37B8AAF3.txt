@@ -1,0 +1,2 @@
+serviceClass: com.aa.color.client.GreetingService
+path: 66FE461A07F69D6ABBD3B0EA9D8C0248.gwt.rpc

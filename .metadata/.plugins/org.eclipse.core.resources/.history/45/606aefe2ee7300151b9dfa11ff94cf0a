@@ -1,0 +1,93 @@
+package com.jdo.in;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.jdo.PersistenceManager;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javax.jdo.Query;
+
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+
+
+@SuppressWarnings("serial")
+public class JdoServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+	        String name = req.getParameter("Name");
+	        String email = req.getParameter("Email");
+	        String password=req.getParameter("Password");
+	        StuDetails sd=new StuDetails();
+	        sd.setName(name);
+	        sd.setEmail(email);
+	        sd.setPassword(password);
+	       PersistenceManager pm = PMF.get().getPersistenceManager();
+	       pm.makePersistent(sd);
+	       Query q = pm.newQuery(StuDetails.class,
+                   "Name == '"+name+"'");
+q.declareParameters("String NameParam");
+
+List<StuDetails> results = (List<StuDetails>) q.execute(name);
+Iterator ite=results.iterator();
+while(ite.hasNext())
+{
+	StuDetails sd1=(StuDetails )ite.next();
+	System.out.println(sd1.getName()+""+sd1.getEmail());
+
+}
+	/* Key key = KeyFactory.createKey(StuDetails.class.getSimpleName(), "hello");
+
+	        @SuppressWarnings("unchecked")
+		StuDetails sd1=pm.getObjectById(StuDetails.class,"aglub19hcHBfaWRyFwsSClN0dURldGFpbHMYgICAgICA0AgM");
+	        
+	        System.out.println("the user name is "+sd1.getName()+" and password "+sd1.getPassword()+" and Email id"+sd1.getEmail());*/
+	        
+	       /* sd1.get(0);
+	        Iterator<StuDetails> user=sd1.iterator();
+	        while(user.hasNext()){
+	        	System.out.println(user.next());
+	        }*/
+	     //sd.setKey(key);
+	       
+	        try {
+	        pm.makePersistent(sd);
+	        }finally {
+	        pm.close();
+	        }
+	        
+	        
+	        
+	       /* Query q = pm.newQuery(StuDetails.class);
+	        q.setFilter("studentName == studentNameParam");
+	        q.setOrdering("height desc");
+	        q.declareParameters("String studentNameParam");
+
+	        try {
+	          List<StuDetails> results = (List<StuDetails>) q.execute("tharanya");
+	          if (!results.isEmpty()) {
+	            for (StuDetails p : results) {
+	              System.out.println(p);// Process result p
+	            }
+	          } else {
+	            System.out.println("value not found");// Handle "no results" case
+	          }
+	        } finally {
+	          q.closeAll();
+	        }
+	      // resp.sendRedirect("/jdo/war/simple.jsp");*/
+	        
+		resp.setContentType("text/plain");
+		resp.getWriter().println("Login sucess");
+	}
+
+	private PersistenceManager getPMF() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

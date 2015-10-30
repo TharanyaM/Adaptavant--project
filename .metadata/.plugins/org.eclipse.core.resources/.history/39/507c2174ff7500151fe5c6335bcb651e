@@ -1,0 +1,25 @@
+package com.session.in;
+
+import java.io.IOException;
+import javax.servlet.http.*;
+
+@SuppressWarnings("serial")
+public class SessionServlet extends HttpServlet {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		 resp.setContentType("text/html;charset=UTF-8");
+	        
+	        String name = req.getParameter("user");
+	        String pass = req.getParameter("pass");
+	        
+	        if(pass.equals("1234"))
+	        {
+	            //creating a session
+	            HttpSession session = req.getSession();
+	            session.setAttribute("user", name);
+	            resp.sendRedirect("welcome");
+	        }
+	    }
+	
+	}
+

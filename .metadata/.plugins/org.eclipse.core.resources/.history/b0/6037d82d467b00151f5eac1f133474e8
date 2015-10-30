@@ -1,0 +1,59 @@
+package com.project.in.models;
+
+import java.util.Date;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+//@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable = "true")
+public class Entry {
+	
+	//@Persistent
+	private String entry;
+	//@PrimaryKey
+	//@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
+	private int entryId;
+	private int groupId;
+	private Date date;
+	
+	public Entry(int groupId, int entryId, String entry) 
+	{
+		this.groupId = groupId;
+		this.entryId = entryId;
+		this.entry = entry;
+	}
+	
+	public int getId() {
+		return entryId;
+	}
+	public void setId(int entryId) {
+		this.entryId = entryId;
+	}
+	public String getEntry() {
+		return entry;
+	}
+	public void setEntry(String entry) {
+		this.entry = entry;
+	}
+
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+
+}
